@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html xmlns:text-align="http://www.w3.org/1999/xhtml" xmlns:Category="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>Add employee!</title>
+  <meta name="author" content="ITSC Inventory Shop">
+  <meta name="description" content="ITSC Inventory Details">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <![endif]-->
+
+  <style>
+
+   div {
+        margin-bottom: 20px;
+      }
+      label {
+        display: inline-block;
+        width: 150px;
+        text-align:right;
+      }
+      .check{
+       margin-bottom: 20px;
+      }
+      label {
+        display: inline-block;
+        width: 150px;
+        text-align:left;
+      }
+
+        body {
+            margin-top: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #e6e4d9;
+            background-image: url('images/pattern.png');
+        }
+
+        #mainheader {
+            background-color: #a593c2;
+        }
+
+        #leftmenu {
+            float: left;
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+
+        nav {
+            height: 60px;
+            width: 1000px;
+            margin: 0 auto 20px;
+        }
+
+        .searchbox {
+            padding: 5px;
+            margin: 10px 10px;
+            width: 200px;
+        }
+
+        #main {
+            float: right;
+            width: 70%;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            clear: both;
+            width: 100%;
+        }
+
+        header,
+        section,
+        footer,
+        aside,
+        nav,
+        main,
+        article,
+        figure {
+            display: block;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        nav>ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav>ul>li {
+            float: left;
+        }
+
+        nav>ul>li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #problemDetails
+{
+    height:40px;
+    width: 500px;
+    font-size:14pt;
+}
+  #remark
+{
+    height:40px;
+    width: 500px;
+    font-size:14pt;
+}
+
+.UsrnmLoca{
+float:left;
+
+
+}
+
+.callcat{
+float:left;
+}
+.cm{
+float:right;}
+
+.prb{
+margin-bottom:5px;
+}
+ div.tym {
+            position: relative;
+            right:-400px;}
+
+    </style>
+  <script>
+                    `use strict`;
+function refreshTime() {
+  const timeDisplay = document.getElementById("time");
+  const dateString = new Date().toLocaleString();
+  const formattedString = dateString.replace(", ", " - ");
+  timeDisplay.textContent = formattedString;
+}
+  setInterval(refreshTime, 1000);
+                </script>
+</head>
+<head>
+
+  <script src=
+                  "https://code.jquery.com/jquery-1.12.4.min.js">
+  </script>
+
+  <style type="text/css">
+        .selectt {
+            color: #fff;
+            padding: 30px;
+            display: none;
+            margin-top: 30px;
+            width: 60%;
+            background: green
+        }
+
+        label {
+            margin-right: 20px;
+        }
+        div.relative {
+            position: relative;
+            left:-270px;}
+    </style>
+</head>
+
+
+<body>
+<header id="mainheader">
+  <nav>
+    <li><a href="view-employee">All Employee</a></li>
+  </nav>
+</header>
+
+<div style="width:1000px;margin-left: auto;margin-right: auto;"class="main">
+  <aside id="leftmenu">
+
+    <ul>
+
+    </ul>
+
+
+  </aside>
+  <div class="tym">
+    <h1>Date&Time:<span id="time"> </span></h1>
+  </div>
+  <main id="main">
+
+    <h1>Register Employee </h1>
+
+    <form action="employeedetails" method="POST" enctype="application/x-www-form-urlencoded">
+      <fieldset>
+        <legend>New Employee</legend>
+        <p>
+          <label for="name">Employee Name: </label>
+          <input type="text" name="Name" id="name">
+        </p>
+        <p>
+          <label for="age">Age: </label>
+          <input type="text" name="age" id="age">
+        </p>
+        <p>
+          <label for="sex">Gender: </label>
+          <input type="text" name="Sex" id="sex">
+        </p>
+        <label for="date">Date of joining: </label>
+        <input type="text" name="doj" id="date">
+        <p>
+          <label for="city">City: </label>
+          <input type="text" name="city" id="city">
+        </p>
+        <p>
+          <label for="salary">Salary: </label>
+          <input type="text" name="salary" id="salary">
+        </p>
+
+
+      </fieldset>
+
+      <input type="submit" value="Save">
+
+    </form>
+  </main>
+  <footer>
+    <p>Our address is <address>507,BDA Complex, 7 No. Bus Stop, Shivaji Nagar Bhopal - 462016 (M. P.)INDIA</address>
+    </p>
+    <small>Copyright © ITSC. All Rights Reserved.</small>
+    <p>Contact us via <a href="mailto:info@itscglobal.com">email</a></p>
+    <p><small><a href="mailto:support@itscglobal.com">Support</a></small></p>
+  </footer>
+</div>
+
+<script type="text/javascript">
+            $(document).ready(function() {
+                $('input[type="radio"]').click(function() {
+                    var inputValue = $(this).attr("value");
+                    var targetBox = $("." + inputValue);
+                    $(".selectt").not(targetBox).hide();
+                    $(targetBox).show();
+                });
+            });
+        </script>
+
+</body>
+
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html xmlns:text-align="http://www.w3.org/1999/xhtml" xmlns:Category="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>Welcome to ITSC Inventory Shop!</title>
+  <meta name="author" content="ITSC Inventory Shop">
+  <meta name="description" content="ITSC Inventory Details">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <![endif]-->
+
+  <style>
+
+   div {
+        margin-bottom: 20px;
+      }
+      label {
+        display: inline-block;
+        width: 150px;
+        text-align:right;
+      }
+      .check{
+       margin-bottom: 20px;
+      }
+      label {
+        display: inline-block;
+        width: 150px;
+        text-align:left;
+      }
+
+        body {
+            margin-top: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #e6e4d9;
+            background-image: url('images/pattern.png');
+        }
+
+        #mainheader {
+            background-color: #a593c2;
+        }
+
+        #leftmenu {
+            float: left;
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+
+        nav {
+            height: 60px;
+            width: 1000px;
+            margin: 0 auto 20px;
+        }
+
+        .searchbox {
+            padding: 5px;
+            margin: 10px 10px;
+            width: 200px;
+        }
+
+        #main {
+            float: right;
+            width: 70%;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            clear: both;
+            width: 100%;
+        }
+
+        header,
+        section,
+        footer,
+        aside,
+        nav,
+        main,
+        article,
+        figure {
+            display: block;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        nav>ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav>ul>li {
+            float: left;
+        }
+
+        nav>ul>li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #problemDetails
+{
+    height:40px;
+    width: 500px;
+    font-size:14pt;
+}
+  #remark
+{
+    height:40px;
+    width: 500px;
+    font-size:14pt;
+}
+
+.UsrnmLoca{
+float:left;
+
+
+}
+
+.callcat{
+float:left;
+}
+.cm{
+float:right;}
+
+.prb{
+margin-bottom:5px;
+}
+ div.tym {
+            position: relative;
+            right:-400px;}
+
+    </style>
+    <script>
+                    `use strict`;
+function refreshTime() {
+  const timeDisplay = document.getElementById("time");
+  const dateString = new Date().toLocaleString();
+  const formattedString = dateString.replace(", ", " - ");
+  timeDisplay.textContent = formattedString;
+}
+  setInterval(refreshTime, 1000);
+                </script>
+</head>
+<head>
+
+    <script src=
+                    "https://code.jquery.com/jquery-1.12.4.min.js">
+    </script>
+
+    <style type="text/css">
+        .selectt {
+            color: #fff;
+            padding: 30px;
+            display: none;
+            margin-top: 30px;
+            width: 60%;
+            background: green
+        }
+
+        label {
+            margin-right: 20px;
+        }
+        div.relative {
+            position: relative;
+            left:-270px;}
+    </style>
+</head>
+
+
+<body>
+<header id="mainheader">
+  <nav>
+    <ul>
+      <li><img src="images/logo.jpg" height="55" /></li>
+      <li><a href="index">Home</a></li>
+      <li><a href="totalinventory">All Inventories</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div style="width:1000px;margin-left: auto;margin-right: auto;"class="main">
+  <aside id="leftmenu">
+
+    <ul>
+        <div class="relative">
+            <p> <b> Browse our inventories</b></p>
+ <!--     <li><a href="usedinventory">Used Items</a></li>   -->
+      <li><a href="unusedinventory">Items in Stock</a></li>
+            <li><a href="call-history">All Calls</a></li>
+            <li><a href="Filter-call">Filter</a></li>
+
+        </div>
+    </ul>
+
+
+  </aside>
+    <div class="tym">
+        <h1>Date&Time:<span id="time"> </span></h1>
+    </div>
+  <main id="main">
+
+    <h1>Register Call </h1>
+
+    <form action="addcall" method="POST" enctype="application/x-www-form-urlencoded">
+      <fieldset>
+        <legend>Call Details</legend>
+
+
+
+        <div>
+          <label for="userName">User Name: </label>
+          <input type="text" name="userName" id="userName">
+        </div>
+
+        <div>
+            <label for="department">Department: </label>
+            <select name = "department" id = "department">
+
+                <option value = "Anaesthesia"> ANAESTHESIA </option>
+                <option value = "Cardiology"> CARDIOLOGY </option>
+                <option value = "Microbiology"> MICROBIOLOGY </option>
+                <option value = "Nephrology"> NEPHROLOGY </option>
+                <option value = "Neurology"> NEUROLOGY </option>
+                <option value = "Neurosurgery"> NEUROSURGERY </option>
+                <option value = "Physiotherapy"> PHYSIOTHERAPY </option>
+                <option value = "Opthalmology"> OPTHALMOLOGY </option>
+                <option value = "Pathology"> PATHOLOGY </option>
+                <option value = "Psychiatry"> PSYCHIATRY </option>
+                <option value = "Pulmonary"> PULMONARY </option>
+                <option value = "Radiology"> RADIOLOGY </option>
+                <option value = "gastroenterology"> GASTROENTEROLOGY </option>
+                <option value = "Surgical oncology"> SURGICAL ONCOLOGY </option>
+                <option value = "Urology"> UROLOGY </option>
+            </select>
+        </div>
+
+          <div>
+              <label for="assetNumber">Asset Number:</label>
+              <input type="textbox" id="assetNumber" name="assetNumber">
+          </div>
+<div style="margin-bottom:10px;">
+    <div class="prb" >
+          <label for="prblmDetails">Problem Details: </label>
+    </div>
+          <textarea style="margin-left:170px; margin-top:-30px;" id="prblmDetails" name="prblmDetails" rows="4" cols="50"></textarea>
+
+</div>
+
+          <p>
+              <label for="byEngg">Engg: </label>
+              <select name = "byEngg" id = "byEngg">
+
+                  <option value = "Arpit"> ARPIT </option>
+                  <option value = "Rajeev"> RAJEEV </option>
+                  <option value = "Ritik"> RITIK </option>
+                  <option value = "Saurabh"> SAURABH </option>
+                  <option value = "Santosh"> SANTOSH </option>
+              </select>
+          </p>
+
+          <p>
+              <label for="callDate">Call Date&Time:</label>
+              <input type="datetime-local" id="callDate" name="callDate">
+
+          </p>
+
+          <p>
+              <label for ="response">Respond At:</label>
+              <input type = "time" id = "response" name = "response">
+          </p>
+
+          <div class="callcat">
+              <label  for ="callCat">Call Cateogry: </label>
+              <select name = "callCat" id = "callCat">
+                  <option value = "Application Support"> Application Support </option>
+                  <option value = "Development"> Development </option>
+                  <option value = "External Support"> External Support </option>
+                  <option value = "Hardware AMC"> Hardware AMC </option>
+                  <option value = "Managed Operation"> Managed Operation </option>
+                  <option value = "User Awareness"> User Awareness </option>
+              </select>
+          </div>
+
+          <div>
+              <label for="callSubCat">Call Sub Category: </label>
+              <select name = "callSubCat" id= "callSubCat">
+                  <option value = "Appl-MM"> Appl-MM</option>
+                  <option value = "Appl-OHMS"> Appl-OHMS</option>
+                  <option value = "Website"> Website</option>
+                  <option value = "Server"> Server</option>
+                  <option value = "Network"> Network</option>
+                  <option value = "Appl-HIS"> Appl-HIS</option>
+                  <option value = "File IW-OW"> File IW-OW</option>
+                  <option value = "Appl-ADT"> Appl-ADT</option>
+                  <option value = "Appl-Billing"> Appl-Billing</option>
+              </select>
+          </div>
+
+          <p>
+              <label for="status">Status: </label>
+              <select name = "status" id = "status">
+                  <option value = "Open"> Open </option>
+                  <option value = "Pending"> Pending </option>
+                  <option value = "Close"> Close </option>
+              </select>
+          </p>
+
+          <div>
+              <label for="closingMode">Closing Mode:</label>
+              <select name = "closingMode" id="closingMode">
+                  <option value = "Mail"> MAIL </option>
+                  <option value = "Sign"> SIGN </option>
+                  <option value = "Sign/Edp"> SIGN/EDP </option>
+                  <option value = "Telephonic"> TELEPHONIC </option>
+                  <option value = "Verbal"> VERBAL </option>
+                  <option value = "Visit"> VISIT </option>
+              </select>
+</div>
+
+
+          <div>
+              <label for="closingTime">Close Date&Time:</label>
+              <input type="datetime-local" id="closingTime" name="closingTime">
+
+          </div>
+
+
+
+
+
+<p>
+     <label for="content">Remark: </label>
+    <input type="textbox" name="content" id="content"width="100" size="60">
+
+</p>
+
+          <div>
+              <p>Hardware Used:</p>
+              <label>
+                  <input type="radio" name="hardwareUsed"
+                         value="Yes"> Yes</label>
+
+              <input type="radio" id="hardwareUsed" name="hardwareUsed" value="No">
+              <label for="hardwareUsed">No</label><br>
+
+          </div>
+
+          <div class="Yes selectt">
+
+              <label for="hardwareName">Choose a Hardware: </label>
+              <select name="hardwareName" id="hardwareName">
+                  <option> -- None -- </option>
+                  <option value="MOUSE">Mouse</option>
+                  <option value="KEYBOARD">KeyBoard</option>
+                  <option value="HARD DISK">Hard Disk</option>
+                  <option value="POWER CABLE">Power Cable</option>
+                  <option value="SMPS">SMPS</option>
+                  <option value="RAM">RAM</option>
+                  <option value="LAN CARD">Lan Card</option>
+                  <option value="CMOS BATTERY">CMOS Battery</option>
+                  <option value="DVD WRITER">DVD Writer</option>
+                  <option value="VGA CABLE">VGA Cable</option>
+                  <option value="MotherBoard">Motherboard</option>
+                  <option value="CPU Fan">CPU Fan</option>
+                  <option value="UPS">UPS</option>
+                  <option value="LAN COUPLER">Lan Coupler</option>
+                  <option value="MONITOR/TFT">Monitor/TFT</option>
+                  <option value="USB CABLE M/F">USB Cable M/F</option>
+                  <option value="SWITCH">Switch</option>
+                  <option value="MEDIA CONVERTER">Media Converter</option>
+                  <option value="PRINTER">Printer</option>
+                  <option value="PRINTER CABLE(USB/LPT)">Printer Cable(USB/LPT)</option>
+                  <option value="PRINTER KNOB">Printer Knob</option>
+                  <option value="PRINTER TRACTOR(DHP)">Printer Tractor(DHP)</option>
+                  <option value="PRINTER GEAR SET">Printer Gear Set</option>
+                  <option value="PRINTER HEAD CABLE">Printer Head Cable</option>
+                  <option value="PRINTER RIBBON MASK">Printer Ribbon Mask</option>
+                  <option value="PRINTER'S ROD">Printer's Rod</option>
+                  <option value="HAMMER PATTI(DMP)">Hammer Patti(DMP)</option>
+                  <option value="USB PCI CARD">USB PCI Card</option>
+                  <option value="PCI PARALLEL CARD">PCI Parallel Card</option>
+                  <option value="SATA IDE CONVERTER">Sata IDE Converter</option>
+                  <option value="PENDRIVE">Pendrive</option>
+                  <option value="WEB CAMERA">Web Camera</option>
+                  <option value="I/O BOX">I/O Box</option>
+                  <option value="CAT CABLE">Cat Cable</option>
+                  <option value="CONDUCT PIPE">Conduct Pipe</option>
+              </select>
+
+              <label for="inventoryNumber">Inventory Number: </label>
+              <input type="text" name="inventoryNumber" id="inventoryNumber">
+          </div>
+
+    <p>Call type:</p>
+    <input type="radio" id="callType" name="callType" value="internal">
+    <label for="callType">Internal</label><br>
+    <input type="radio" id="callType" name="callType" value="callType">
+    <label for="callType">Conveynance</label><br>
+      </fieldset>
+
+      <input type="submit" value="Save">
+
+    </form>
+  </main>
+  <footer>
+    <p>Our address is <address>507,BDA Complex, 7 No. Bus Stop, Shivaji Nagar Bhopal - 462016 (M. P.)INDIA</address>
+    </p>
+    <small>Copyright © ITSC. All Rights Reserved.</small>
+    <p>Contact us via <a href="mailto:info@itscglobal.com">email</a></p>
+    <p><small><a href="mailto:support@itscglobal.com">Support</a></small></p>
+  </footer>
+</div>
+
+<script type="text/javascript">
+            $(document).ready(function() {
+                $('input[type="radio"]').click(function() {
+                    var inputValue = $(this).attr("value");
+                    var targetBox = $("." + inputValue);
+                    $(".selectt").not(targetBox).hide();
+                    $(targetBox).show();
+                });
+            });
+        </script>
+
+</body>
+
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html xmlns:text-align="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title>Welcome to ITSC Inventory Shop!</title>
+    <meta name="author" content="ITSC Inventory Shop">
+    <meta name="description" content="ITSC Inventory Details">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+    <script>
+        buildTable();
+
+        async function buildTable(){
+	    const response = await fetch('http://localhost:8080/fetch');
+	    const data = await response.json();
+		var table = document.getElementById('myTable')
+
+		for (var i = 0; i < data.length; i++){
+			var row = `<tr>
+                            <td>${data[i].id}</td>
+							<td>${data[i].name}</td>
+							<td>${data[i].price}</td>
+							<td>${data[i].department}</td>
+							<td>${data[i].assignee}</td>
+					  </tr>`
+			table.innerHTML += row
+		}
+	}
+    </script>
+
+    <style>
+
+   div {
+        margin-bottom: 20px;
+      }
+      label {
+        display: inline-block;
+        width: 150px;
+        text-align:right;
+      }
+      .check{
+       margin-bottom: 20px;
+      }
+      label {
+        display: inline-block;
+        width: 150px;
+        text-align:left;
+      }
+
+
+
+
+
+
+        body {
+            margin-top: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #e6e4d9;
+            background-image: url('images/pattern.png');
+        }
+
+        #mainheader {
+            background-color: #a593c2;
+        }
+
+        #leftmenu {
+            float: left;
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+
+        nav {
+            height: 60px;
+            width: 1000px;
+            margin: 0 auto 20px;
+        }
+
+        .searchbox {
+            padding: 5px;
+            margin: 10px 10px;
+            width: 200px;
+        }
+
+        #main {
+            float: right;
+            width: 70%;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            clear: both;
+            width: 100%;
+        }
+
+        header,
+        section,
+        footer,
+        aside,
+        nav,
+        main,
+        article,
+        figure {
+            display: block;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        nav>ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav>ul>li {
+            float: left;
+        }
+
+        nav>ul>li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #problemDetails
+{
+    height:40px;
+    width: 500px;
+    font-size:14pt;
+}
+  #remark
+{
+    height:40px;
+    width: 500px;
+    font-size:14pt;
+}
+body {
+  font-family: 'Brush Script MT', cursive;
+}
+
+
+
+    </style>
+</head>
+
+
+<body>
+<header id="mainheader">
+    <nav>
+        <ul>
+            <li><img src="images/logo.jpg" height="55" /></li>
+            <li><a href="index">Home</a></li>
+            <li><a href="totalinventory">All Inventories</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div style="width:1000px;margin-left: auto;margin-right: auto;"class="main">
+    <aside id="leftmenu">
+        <header>
+            <h4 style="text-align: center;">Browse our inventories</h4>
+        </header>
+        <ul>
+
+            <li><a href="call-details">Register Call</a></li>
+
+        </ul>
+
+
+    </aside>
+    <main id="main">
+        <p style="font-size:50px; color:red;"><b>Page Under Progress....... </b></p>
+        <h1>Filter Call </h1>
+        <form action="/Filter-call" method="POST" enctype="application/x-www-form-urlencoded">
+            <fieldset>
+                <legend>Call Details</legend>
+
+
+
+                <div class="div1">
+                    <label for="mDate">From: </label>
+                    <input tabindex="5" type="date" name="mDate" id="mDate">
+                </div>
+
+                <div class ="locate">
+                    <label for="mDate">To: </label>
+                    <input tabindex="5" type="date" name="mDate" id="mDate">
+                </div>
+
+                <div class="UsrnmLoca">
+                    <label for="userName">User: </label>
+                    <input type="text" name="userName" id="userName">
+
+
+<p>
+                    <label for="inventory">Asset No:</label>
+                    <input type="text" id="inventory" name="inventory">
+</p>
+<p>
+                </div>
+                <div class="callcat">
+                    <label for="callCateogry">Call Cateogry: </label>
+                    <select> name = "callCateogry" id = "callCateogry"
+                        <option value = "applicationsupport"> Application Support </option>
+                        <option value = "development"> Development </option>
+                        <option value = "externalsupport"> External Support </option>
+                        <option value = "hardwareamc"> Hardware AMC </option>
+                        <option value = "managedoperation"> Managed Operation </option>
+                        <option value = "userawareness"> User Awareness </option>
+                    </select>
+                    </p>
+
+
+                    <label for="callsubcategory">Call Sub Category: </label>
+                    <select> name = "callsubcategory" id= "callsubcategory"
+                        <option value = "appl-mm"> Appl-MM</option>
+                        <option value = "appl-ohms"> Appl-OHMS</option>
+                        <option value = "website"> Website</option>
+                        <option value = "server"> Server</option>
+                        <option value = "network"> Network</option>
+                        <option value = "appl-his"> Appl-HIS</option>
+                        <option value = "file iw-ow"> File IW-OW</option>
+                        <option value = "appl-adt"> Appl-ADT</option>
+                        <option value = "appl-billing"> Appl-Billing</option>
+                    </select>
+
+                    <label for="department">Department: </label>
+                    <select name = "department" id = "department">
+
+                        <option value = "Anaesthesia"> ANAESTHESIA </option>
+                        <option value = "Cardiology"> CARDIOLOGY </option>
+                        <option value = "Microbiology"> MICROBIOLOGY </option>
+                        <option value = "Nephrology"> NEPHROLOGY </option>
+                        <option value = "Neurology"> NEUROLOGY </option>
+                        <option value = "Neurosurgery"> NEUROSURGERY </option>
+                        <option value = "Physiotherapy"> PHYSIOTHERAPY </option>
+                        <option value = "Opthalmology"> OPTHALMOLOGY </option>
+                        <option value = "Pathology"> PATHOLOGY </option>
+                        <option value = "Psychiatry"> PSYCHIATRY </option>
+                        <option value = "Pulmonary"> PULMONARY </option>
+                        <option value = "Radiology"> RADIOLOGY </option>
+                        <option value = "gastroenterology"> GASTROENTEROLOGY </option>
+                        <option value = "Surgical oncology"> SURGICAL ONCOLOGY </option>
+                        <option value = "Urology"> UROLOGY </option>
+                    </select>
+
+                    <label for="engg">Engg: </label>
+                    <select> name = "engg" id = "engg"
+                        <option value = "Arpit"> ARPIT </option>
+                        <option value = "Rajeev"> RAJEEV </option>
+                        <option value = "Ritik"> RITIK </option>
+                        <option value = "Saurabh"> SAURABH </option>
+                        <option value = "Santosh"> SANTOSH </option>
+                    </select>
+
+                </div>
+<p>Call status:</p>
+                <label class="radio-inline">
+                    <input type="radio" name="optradio" checked>Open
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="optradio">Close
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="optradio">Pending
+
+
+
+            </fieldset>
+
+            <input type="submit" value="Filter">
+
+        </form>
+    </main>
+    <footer>
+        <p>Our address is <address>507,BDA Complex, 7 No. Bus Stop, Shivaji Nagar Bhopal - 462016 (M. P.)INDIA</address>
+        </p>
+        <small>Copyright © ITSC. All Rights Reserved.</small>
+        <p>Contact us via <a href="mailto:info@itscglobal.com">email</a></p>
+        <p><small><a href="mailto:support@itscglobal.com">Support</a></small></p>
+    </footer>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <title>Welcome to ITSC Inventory Shop!</title>
+    <meta name="author" content="ITSC Inventory Shop">
+    <meta name="description" content="ITSC Inventory Details">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+
+    <![endif]-->
+
+    <!--    &lt;!&ndash;-->
+    <!--                    <script>-->
+    <!--                        buildTable();-->
+
+    <!--                        async function buildTable(){-->
+    <!--                        const response = await fetch('http://localhost:8080/fetchStockItems');-->
+    <!--                        const data = await response.json();-->
+    <!--                        var table = document.getElementById('myTable')-->
+
+    <!--                        for (var i = 0; i < data.length; i++){-->
+    <!--                            var row = `<tr>-->
+    <!--                                            <td>${data[i].hardwareName}</td>-->
+    <!--                                            <td>${data[i].receivedDate}</td>-->
+    <!--                                            <td>${data[i].docNumber}</td>-->
+    <!--                                            <td>${data[i].initialQuantity}</td>-->
+    <!--                                            <td>${data[i].remainingQuantity}</td>-->
+
+    <!--                                      </tr>`-->
+    <!--                            table.innerHTML += row-->
+    <!--                        }-->
+
+    <!--                    }-->
+    <!--                </script>-->
+    <!--  &ndash;&gt;-->
+
+    <!--        </head>-->
+    <!--                    <table>-->
+    <!--                        <tr>-->
+    <!--                            <td><h4>Hardware Name: </h4></td>-->
+    <!--                            <td><h4 th:text="${stockItems.hardwareName}"></h4></td>-->
+    <!--                        </tr>-->
+
+    <!--                        <tr>-->
+    <!--                            <td><h4>Received Date: </h4></td>-->
+    <!--                            <td><h4 th:text="${stockItems.receivedDate}"></h4></td>-->
+    <!--                        </tr>-->
+    <!--                        <tr>-->
+    <!--                        <td><h4>Docket Number: </h4></td>-->
+    <!--                        <td><h4 th:text="${stockItems.docNumber}"></h4></td>-->
+    <!--                        </tr>-->
+
+    <!--                        <tr>-->
+    <!--                            <td><h4>Initial Quantity: </h4></td>-->
+    <!--                            <td><h4 th:text="${stockItems.initialQuantity}"></h4></td>-->
+    <!--                        </tr>-->
+    <!--                        <tr>-->
+    <!--                            <td><h4>Remaining Quantity: </h4></td>-->
+    <!--                            <td><h4 th:text="${stockItems.remainingQuantity}"></h4></td>-->
+    <!--                        </tr>-->
+
+    <!--                    </table>-->
+    <!--                        </html>-->
+
+    <style>
+            body {
+                margin-top: 0px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: #e6e4d9;
+                background-image: url('images/pattern.png');
+            }
+
+            #mainheader {
+                background-color: #a593c2;
+            }
+
+            #leftmenu {
+                float: left;
+                width: 30%;
+                margin-bottom: 20px;
+            }
+
+            nav {
+                height: 60px;
+                width: 1000px;
+                margin: 0 auto 20px;
+            }
+
+            .searchbox {
+                padding: 5px;
+                margin: 10px 10px;
+                width: 200px;
+            }
+
+            #main {
+                float: right;
+                width: 70%;
+                margin-bottom: 20px;
+            }
+            footer {
+                clear: both;
+                width: 100%;
+            }
+
+            header,
+            section,
+            footer,
+            aside,
+            nav,
+            main,
+            article,
+            figure {
+                display: block;
+            }
+
+            table,
+            td,
+            th {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 5px;
+            }
+
+            nav>ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav>ul>li {
+                float: left;
+            }
+
+            nav>ul>li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 16px;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        </style>
+</head>
+
+
+
+<body>
+<header id="mainheader">
+    <nav>
+        <ul>
+            <li><img src="images/logo.jpg" height="55" /></li>
+            <li><a href="index">Home</a></li>
+            <li><a href="totalinventory">All Inventories</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div style="width:1000px;margin-left: auto;margin-right: auto;">
+    <aside id="leftmenu">
+
+
+        <style>
+                div.relative {
+                position: relative;
+                left:-270px;}
+
+                </style>
+        <ul>
+            <div class="relative">
+                <p> <b> Browse our inventories</b></p>
+                <li><a href="add-item">Add a new Item in stock</a></li>
+            </div>
+
+        </ul>
+
+
+        <div style="padding-left:1000px" >
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search....." title="Type in a name">
+
+            <table id="assigned_items">
+
+            </table>
+        </div>
+
+        <script>
+        var searchBox_3 = document.getElementById("myInput");
+    searchBox_3.addEventListener("keyup",function(){
+        var keyword = this.value;
+        keyword = keyword.toUpperCase();
+        var table_3 = document.getElementById("myTable");
+        var all_tr = table_3.getElementsByTagName("tr");
+        for(var i=0; i<all_tr.length; i++){
+                var all_columns = all_tr[i].getElementsByTagName("td");
+              for(j=0;j<all_columns.length; j++){
+                    if(all_columns[j]){
+                        var column_value = all_columns[j].textContent || all_columns[j].innerText;
+
+                        column_value = column_value.toUpperCase();
+                        if(column_value.indexOf(keyword) > -1){
+                            all_tr[i].style.display = ""; // show
+                            break;
+                        }else{
+                            all_tr[i].style.display = "none"; // hide
+                        }
+                    }
+                }
+            }
+    })
+
+    </script>
+
+
+    </aside>
+    <main id="main">
+        <table >
+            <caption>
+                <b> Stock Details</b>
+            </caption>
+
+            <thead>
+            <tr>
+
+                <th>Hardware Name</th>
+                <th>Received Date</th>
+                <th>Doc Number</th>
+                <th>Initial Quantity</th>
+                <th>Remaining Quantity</th>
+
+                <td><h4 th:text="${StockItemsList.hardwareName}"></h4></td>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+            <tbody id="myTable">
+            <tr>
+
+                <td><h4 th:text="${stockItemsList.hardwareName}"></h4></td>
+            </tr>
+
+            </tbody>
+        </table>
+
+
+    </main>
+    <footer>
+        <p>Our address is <address>507,BDA Complex, 7 No. Bus Stop, Shivaji Nagar Bhopal - 462016 (M. P.)INDIA</address>
+        </p>
+        <small>Copyright © ITSC. All Rights Reserved.</small>
+        <p>Contact us via <a href="mailto:info@itscglobal.com">email</a></p>
+        <p><small><a href="mailto:support@itscglobal.com">Support</a></small></p>
+    </footer>
+</div>
+
+
+</body>
+
+</html>

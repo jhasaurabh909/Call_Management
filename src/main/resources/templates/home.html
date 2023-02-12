@@ -1,0 +1,55 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<style>
+    th{
+        color:#fff;
+            }
+</style>
+
+
+<table class="table table-striped">
+  <tr  class="bg-info">
+    <th>Quantity</th>
+    <th>Hardware Name</th>
+    <th>Doc Number/Date</th>
+    <th>Inventory Number</th>
+    <th>Date</th>
+    <th>Department</th>
+    <th> By Engineer</th>
+    <th>Remark</th>
+  </tr>
+
+  <tbody id="myTable">
+
+  </tbody>
+</table>
+
+<script>
+
+	buildTable();
+
+	async function buildTable(){
+	const response = await fetch('http://localhost:8080/fetch');
+	const data = await response.json();
+		var table = document.getElementById('myTable')
+
+		for (var i = 0; i < data.length; i++){
+			var row = `<tr>
+							<td>${data[i].quantity}</td>
+							<td>${data[i].hardwareName}</td>
+							<td>${data[i].docNumber}</td>
+							<td>${data[i].inventoryNumber}</td>
+							<td>${data[i].mDate}</td>
+							<td>${data[i].department}</td>
+							<td>${data[i].byEngg}</td>
+							<td>${data[i].content}</td>
+					  </tr>`
+			table.innerHTML += row
+
+
+		}
+	}
+
+</script>
